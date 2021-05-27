@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>update Page</title>
+  </head>
+  <body>
+   
+   
+
+
+   <div class="card text-center">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      
+      <br>
+
+
+      
+
+  {% if perms.auth.change_user %}
+
+  <div class="container">
+    <h1>
+        Update Form of - {{user.username}}, id - [ {{user.id}} ]
+  </h1>
+  <hr>
+  <br>
+  <br>
+
+  <form method="POST" action="">
+  
+      {% csrf_token %}
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <h4>  {{form.username.label}}</h4>
+              <input name="username" type="username" class="form-control"   value="{{user.username}}">
+        </div>
+        
+  <br>
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+               <h4> {{form.email.label}} </h4> 
+               
+                <input name="email" type="email" class="form-control"   value="{{user.email}}">
+            </div>
+          </div>
+        
+      </div>
+      <br>
+    
+      <div class="form-outline mb-4">
+        <h4>  {{form.first_name.label}}</h4>
+          <input name="first_name" type="first_name" class="form-control"   value="{{user.first_name}}">
+      </div>
+      <br>
+    
+      <div class="form-outline mb-4">
+        <h4>  {{form.last_name.label}}</h4>
+          <input name="last_name" type="last-name" class="form-control"   value="{{user.last_name}}">
+      </div>
+      <br>
+    
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        
+        <h4>  {{form.password1.label}}</h4>
+      <input name="password1" type="password" class="form-control"   value="">
+      </div>
+      <br>
+      <div class="form-outline mb-4">
+        
+        <h4>  {{form.password2.label}}</h4>
+          <input name="password2" type="password" class="form-control"   value="{{user.password2}}">
+          </div>
+          <div class="form-outline mb-4">
+        
+            {{form.errors}}
+            </div>
+          <br>
+          
+          <br>
+          
+    
+     
+          <button type="submit" class="btn btn-primary btn-block mb-4"><input class="btn btn-success" type="submit" name="Create User" ></button>
+       
+          
+      </div>
+    </form>
+  </div>
+  
+  {% else %}
+  
+  
+  <div class="card-body">
+    <h1>You aren't authorized for this</h1>
+  </div>
+  {% endif %}
+  
+
+
+
+
+
+      
+      <a href="{% url 'home' %}" class="btn btn-primary">Go Back Home</a>
+      <a href="{%url 'register'%}" class="btn btn-info">Register  Someone</a>
+    </div>
+    
+  </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

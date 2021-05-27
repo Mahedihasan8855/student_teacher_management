@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Teacher User page</title>
+  </head>
+  <body>
+   
+   
+
+
+   <div class="card text-center">
+    <div class="card-header">
+      <h1>Teacher Users List Page</h1>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Lists of Teacher Users</h5>
+      
+      <br>
+      
+        <h1> </h1>
+
+  
+
+{% if users %}
+   <table class="table table-dark">
+    <thead>
+        
+      <tr>
+        <th scope="col"> Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Edit & Delete</th>
+
+       
+      </tr>
+       
+    </thead>
+
+    <tbody>
+        {% for user in users %}
+      <tr>
+        <th scope="row">{{user.username}}</th>
+        <td>{{user.email}}</td>
+        <td>
+            <a href="{% url 'update_user' user.id %}" class="btn btn-outline-warning "> Edit</a> 
+
+
+            <form action="{% url 'delete_users' user.id %}" method="POST" class="d-inline" >
+                {% csrf_token %}
+                <input type="submit" class="btn btn-outline-danger in" value="Delete">
+            </form>
+
+
+        </td>
+    </tr>
+     {% endfor %}
+      
+    </tbody>
+  </table>
+  {% else %}
+<table class="table table-danger">
+    <thead>
+      <tr>
+        <th scope="col">No One is Here</th>
+        
+      </tr>
+    </thead>
+    
+  </table>
+<br>
+  {% endif %}
+
+
+
+      
+      <a href="{% url 'home' %}" class="btn btn-primary">Go Back</a>
+      <a href="{%url 'register_teacher_user'%}" class="btn btn-info">Register Teacher User</a>
+    </div>
+    
+  </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
